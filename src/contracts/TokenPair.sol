@@ -7,4 +7,7 @@ import {Math} from "@openzeppelin/contracts/utils/math/Math.sol";
 import {ITokenPair} from "../interfaces/ITokenPair.sol";
 import {IERC20} from "../interfaces/IERC20.sol";
 
-contract TokenPair is ERC20, ReentrancyGuard, ITokenPair
+contract TokenPair is ERC20, ReentrancyGuard, ITokenPair {
+    address public factory;
+    address public tokenA;
+    address public tokenB;

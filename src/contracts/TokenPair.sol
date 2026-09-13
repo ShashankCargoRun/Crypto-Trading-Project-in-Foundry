@@ -6,3 +6,5 @@ import {ReentrancyGuard} from "@openzeppelin/contracts/utils/ReentrancyGuard.sol
 import {Math} from "@openzeppelin/contracts/utils/math/Math.sol";
 import {ITokenPair} from "../interfaces/ITokenPair.sol";
 import {IERC20} from "../interfaces/IERC20.sol";
+
+contract TokenPair is ERC20, ReentrancyGuard, ITokenPair

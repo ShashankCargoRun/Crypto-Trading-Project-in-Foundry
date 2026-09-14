@@ -14,3 +14,5 @@ contract TokenPair is ERC20, ReentrancyGuard, ITokenPair {
 
     uint256 private reserveA;
      uint256 private reserveB;
+
+    uint256 private blockTimestampLast;

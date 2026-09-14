@@ -16,3 +16,5 @@ contract TokenPair is ERC20, ReentrancyGuard, ITokenPair {
      uint256 private reserveB;
 
     uint256 private blockTimestampLast;
+
+    uint256 public constant MINIMUM_LIQUIDITY = 10 ** 3;

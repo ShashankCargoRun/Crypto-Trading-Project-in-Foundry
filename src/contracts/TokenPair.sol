@@ -24,3 +24,5 @@ contract TokenPair is ERC20, ReentrancyGuard, ITokenPair {
       constructor() ERC20("LP Token", "LPT") {
           factory = msg.sender;
       }
+
+       function initialize(address _tokenA, address _tokenB) external {

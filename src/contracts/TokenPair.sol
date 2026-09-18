@@ -50,6 +50,10 @@ contract TokenPair is ERC20, ReentrancyGuard, ITokenPair {
         uint256 balanceA = IERC20(tokenA).balanceOf(address(this));
         uint256 balanceB = IERC20(tokenB).balanceOf(address(this));
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> dfc9cc2 (Initial commit)
         uint256 amountA = balanceA - _reserveA;
         uint256 amountB = balanceB - _reserveB;
 
@@ -129,4 +133,8 @@ contract TokenPair is ERC20, ReentrancyGuard, ITokenPair {
         _setReserves(balance0, balance1);
         emit Swap(msg.sender, amountAIn, amountBIn, amountAOut, amountBOut, to);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> dfc9cc2 (Initial commit)

@@ -9,3 +9,8 @@ import {AMMLibrary} from "../libraries/AMMLibrary.sol";
 contract AMMRouter is IAMMRouter {
     address public immutable factory;
     bytes32 private initCodeHash;
+
+     constructor(address _factory) {
+        factory = _factory;
+        initCodeHash = IPairFactory(factory).INIT_CODE_PAIR_HASH();
+    }

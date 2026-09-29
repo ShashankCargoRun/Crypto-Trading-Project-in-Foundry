@@ -19,3 +19,12 @@ contract AMMRouter is IAMMRouter {
         require(deadline >= block.timestamp, "DEADLINE_EXPIRED");
         _;
     }
+
+      // Fetch the reserves and pair address for a pair while respecting the token order
+    function getReserves(
+        address tokenA,
+        address tokenB
+    ) public view returns (uint256 reserveA, uint256 reserveB, address pair) {
+        (address _tokenA,) = AMMLibrary.sortTokens(tokenA, tokenB);
+
+        pair = AMMLibrary.pairFor(factory, tokenA, tokenB, initCodeHash);

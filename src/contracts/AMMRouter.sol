@@ -28,3 +28,16 @@ contract AMMRouter is IAMMRouter {
         (address _tokenA,) = AMMLibrary.sortTokens(tokenA, tokenB);
 
         pair = AMMLibrary.pairFor(factory, tokenA, tokenB, initCodeHash);
+
+         // // Check if pair exists before calling getReserves
+        if (pair.code.length == 0) {
+            return (0, 0, pair);
+        }
+
+        (uint256 _reserveA, uint256 _reserveB, ) = ITokenPair(pair)
+            .getReserves();
+
+        (reserveA, reserveB) = tokenA == _tokenA
+            ? (_reserveA, _reserveB)
+            : (_reserveB, _reserveA);
+    }

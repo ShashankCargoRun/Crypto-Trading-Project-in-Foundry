@@ -14,3 +14,8 @@ contract AMMRouter is IAMMRouter {
         factory = _factory;
         initCodeHash = IPairFactory(factory).INIT_CODE_PAIR_HASH();
     }
+
+     modifier ensure(uint256 deadline) {
+        require(deadline >= block.timestamp, "DEADLINE_EXPIRED");
+        _;
+    }

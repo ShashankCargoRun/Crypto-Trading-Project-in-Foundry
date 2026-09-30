@@ -41,3 +41,12 @@ contract AMMRouter is IAMMRouter {
             ? (_reserveA, _reserveB)
             : (_reserveB, _reserveA);
     }
+
+     // Perform getAmountOut calculation along the pairs in the path
+    //path [0xa,0xb] amountIn = 100 amounts = [100,200]
+    function getAmountsOut(
+        uint256 amountIn,
+        address[] memory path
+    ) public view returns (uint256[] memory amounts) {
+        require(path.length >= 2, "INVALID_PATH");
+        amounts = new uint256[](path.length);

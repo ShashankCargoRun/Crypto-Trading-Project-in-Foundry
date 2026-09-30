@@ -50,3 +50,18 @@ contract AMMRouter is IAMMRouter {
     ) public view returns (uint256[] memory amounts) {
         require(path.length >= 2, "INVALID_PATH");
         amounts = new uint256[](path.length);
+
+          amounts[0] = amountIn;
+
+        for (uint256 i = 0; i < path.length - 1; i++) {
+            (uint256 reserveIn, uint256 reserveOut, ) = getReserves(
+                path[i],
+                path[i + 1]
+            );
+            amounts[i + 1] = AMMLibrary.getAmountOut(
+                amounts[i],
+                reserveIn,
+                reserveOut
+            );
+        }
+    }
